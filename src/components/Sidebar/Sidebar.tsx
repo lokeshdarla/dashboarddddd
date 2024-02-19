@@ -3,13 +3,13 @@ import { useState } from "react";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
 import { RiPieChart2Fill } from "react-icons/ri";
-import { MdLibraryBooks, MdNavigateBefore, MdNavigateNext } from "react-icons/md";
+import { MdLibraryBooks, MdNavigateNext } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import Image from "next/image";
 import { BsFire } from "react-icons/bs";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
-import { MdOutlineNavigateNext } from "react-icons/md";
+import Dashboard from "../dashboard/Dashboard";
 
 
 const Sidebar = () => {
@@ -28,7 +28,7 @@ const toggleSideBar=()=>{
 }
 
   return (
-    <div className="flex">
+    <div className="flex bg-[#111729]">
       <div
         className={` ${
           open ? "w-60" : "w-18"
@@ -55,7 +55,7 @@ const toggleSideBar=()=>{
             </li>
           ))}
           </ul>
-          <div className="flex-col flex items-center justify-center gap-5">
+          <div className="flex-col flex items-center justify-center gap-10 w-full">
           <div className="flex items-center justify-center gap-5">
           <Image
             src="/user.png"
@@ -67,14 +67,18 @@ const toggleSideBar=()=>{
           </span>
           </div>
         
-         
-          <FaArrowRightFromBracket size={20} className="text-[#CCCCCC]"/>
+            <div className="flex items-center justify-center gap-5">
+            <FaArrowRightFromBracket size={20} className="text-[#CCCCCC]"/>
+            <span className={`${!open && "hidden"} origin-left duration-200 text-white`}>
+          Logout
+          </span>
+            </div>
+        
           </div>
         </div>
       </div>
-      <div className="flex-1 h-screen p-7 ">
-        <h1 className="text-2xl font-semibold">Home Page</h1>
-        
+      <div className="flex-1 p-5 h-screen">
+        <Dashboard/>        
       </div>
     </div>
   );
