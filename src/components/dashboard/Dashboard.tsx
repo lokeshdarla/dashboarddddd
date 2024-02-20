@@ -3,12 +3,13 @@ import { FaSearch } from "react-icons/fa";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { LuDot } from "react-icons/lu";
 import Image from 'next/image';
+import MyChart from '../Charts/Chart';
 
 function Dashboard() {
   return (
-    <section className='h-[100%] w-full bg-[#151C39] rounded-2xl p-3 grid grid-cols-3 space-x-3'>
-    <div className='col-span-2  rounded-2xl grid grid-rows-5 space-y-2 p-2'>
-      <div className='row-span-1 rounded-xl p-2 flex items-center justify-around'>
+    <section className='h-[100%] w-full bg-[#151C39] rounded-2xl grid grid-cols-3 space-x-3 '>
+    <div className='col-span-2  rounded-2xl grid grid-rows-5 space-y-4 p-2 border border-white'>
+      <div className='row-span-1 rounded-xl  flex items-center justify-around'>
       <h1 className='text-3xl font-bold text-[#FFFFFF]'>
         <span className='font-thin'>Hello,</span>
         <br />
@@ -38,54 +39,73 @@ function Dashboard() {
      
   
       </div>
-      <div className='row-span-2 bg-pink-200 rounded-xl grid grid-cols-5 p-3 space-x-2'>
-      <div className='col-span-2 bg-[#C7C8CC] rounded-xl'>
+      <div className='row-span-2  rounded-xl grid grid-cols-5 space-x-2'>
+      <div className='col-span-2 grid grid-rows-2 space-y-2'>
+      <div className='row-span-1 bg-[#1B2C4F] rounded-xl'>
 
       </div>
-      <div className='col-span-3 bg-[#1F2544] rounded-xl'>
+      <div className='row-span-2 bg-[#1B2C4F] rounded-xl'>
 
       </div>
       </div>
-      <div className='row-span-3 bg-red-400 rounded-xl grid grid-cols-5 p-3 space-x-2'>
-        <div className='col-span-3 bg-[#836FFF] rounded-xl'>
+      <div className='col-span-3 rounded-xl flex flex-col justify-center items-center bg-gradient-to-br from-[#1B2C4F] to-[#409BEE]'>
+      <div className=' flex items-center justify-between w-96 px-4'>
+        <div className='flex flex-col items-start justify-center'>
+          <h1 className='text-white text-xl'>Statistics</h1>
+          <h3 className='text-[#CCCCCC] text-sm'>November 2023</h3>
+        </div>
+        <button className='px-4 rounded-full text-sm py-2 text-white  border border-[#409BEE]'>Weekly</button>
+      </div>
+      <MyChart/>
+      </div>
+      </div>
+      <div className='row-span-3  grid grid-cols-5 space-x-2'>
+        <div className='col-span-3 bg-[#1B2C4F] rounded-xl'>
 
         </div>
-        <div className='col-span-2 bg-[#ECB159] rounded-xl'>
-        
+        <div className='col-span-2  space-y-2 grid grid-rows-2'>
+          <div className='row-span-1 bg-[#1B2C4F] rounded-xl'>
+
+          </div>
+          <div className='row-span-1 bg-[#1B2C4F] rounded-xl'>
+
+          </div>
         </div>
       </div>
     </div>
     <div className='col-span-1 bg-[#111729] rounded-2xl grid grid-rows-10 py-6 px-8 space-y-2'>
       {/* Content for the second div */}
-      <div className='row-span-4 bg-[#B6FFFA] rounded-full'>
-
+      <div className='row-span-3  flex flex-col items-center justify-center gap-2 text-white'>
+      <Image 
+  src='/user.png'
+  width={100}
+  height={100}
+  className='rounded-full bg-gray-50'
+ 
+  alt=''
+/>
+<h1 className='text-2xl'>Aliam Colter</h1>
+<p className='text-sm text-[#CCCCCC]'>Physician</p>
       </div>
       <div className='row-span-1 bg-[#1C2A4E] rounded-xl flex items-center justify-around h-a'>
-        <h1 className='text-white'>Active Patients</h1>
-        <div className='flex -space-x-4 rtl:space-x-reverse'>
-          <Image 
-          src='/user.png'
-          width={50}
-            height={50}
-            className='border border-white rounded-full bg-black'
-           alt=';'/>
-            <Image 
-          src='/user.png'
-          width={50}
-          className='border border-white rounded-full bg-black'
-            height={50}
-           alt=';'/>
-            <Image 
-          src='/user.png'
-          width={50}
-          className='border border-white rounded-full bg-black'
-            height={50}
-           alt=';'/>
-<a href="#" className='w-12 h-12 bg-black text-white rounded-full flex items-center justify-center'>+8</a>
+        <h1 className='text-white text-sm'>Active Patients</h1>
+        <div className='flex -space-x-4 rtl:space-x-reverse items-center justify-center'>
+        {[1,2,3].map((index) => (
+      <Image 
+        key={index}  // Make sure to include a unique key for each element in the array
+        src='/user.png'
+        width={40}
+        height={40}
+        className='border h-10 w-10 border-white rounded-full bg-black'
+        alt=''
+      />
+    ))}
+           
+<a href="#" className='w-11 h-11 p-2 bg-black text-white rounded-full flex items-center justify-center'>+8</a>
 
         </div>
       </div>
-      <div className='row-span-5 bg-[#687EFF] rounded-xl'>
+      <div className='row-span-6 bg-[#1C2A4E] rounded-xl'>
 
       </div>
     </div>

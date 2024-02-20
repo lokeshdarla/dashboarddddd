@@ -77,7 +77,7 @@ const toggleSideBar=()=>{
           </div>
         </div>
       </div>
-      <div className="flex-1 p-5 h-screen">
+      <div className="flex-1 h-screen">
         <Dashboard/>        
       </div>
     </div>
