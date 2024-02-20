@@ -2,13 +2,17 @@ import React from 'react'
 import { FaSearch } from "react-icons/fa";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { LuDot } from "react-icons/lu";
+
 import Image from 'next/image';
 import MyChart from '../Charts/Chart';
+import PatientCount from '../Cards/PatientCount';
+import UpcomingCard from '../Cards/UpcomingCard';
+import Chat from '../Chat/Chat';
 
 function Dashboard() {
   return (
-    <section className='h-[100%] w-full bg-[#151C39] rounded-2xl grid grid-cols-3 space-x-3 '>
-    <div className='col-span-2  rounded-2xl grid grid-rows-5 space-y-4 p-2 border border-white'>
+    <section className='h-[100%] w-full bg-[#151C39] rounded-2xl grid grid-cols-3 space-x-3 p-5'>
+    <div className='col-span-2  rounded-2xl grid grid-rows-7 space-y-4 p-2 border border-white'>
       <div className='row-span-1 rounded-xl  flex items-center justify-around'>
       <h1 className='text-3xl font-bold text-[#FFFFFF]'>
         <span className='font-thin'>Hello,</span>
@@ -39,13 +43,13 @@ function Dashboard() {
      
   
       </div>
-      <div className='row-span-2  rounded-xl grid grid-cols-5 space-x-2'>
+      <div className='row-span-3  rounded-xl grid grid-cols-5 space-x-2'>
       <div className='col-span-2 grid grid-rows-2 space-y-2'>
       <div className='row-span-1 bg-[#1B2C4F] rounded-xl'>
-
+         <PatientCount/>
       </div>
       <div className='row-span-2 bg-[#1B2C4F] rounded-xl'>
-
+        <UpcomingCard/>
       </div>
       </div>
       <div className='col-span-3 rounded-xl flex flex-col justify-center items-center bg-gradient-to-br from-[#1B2C4F] to-[#409BEE]'>
@@ -59,11 +63,11 @@ function Dashboard() {
       <MyChart/>
       </div>
       </div>
-      <div className='row-span-3  grid grid-cols-5 space-x-2'>
+      <div className='row-span-3  grid grid-cols-5 gap-2'>
         <div className='col-span-3 bg-[#1B2C4F] rounded-xl'>
 
         </div>
-        <div className='col-span-2  space-y-2 grid grid-rows-2'>
+        <div className='col-span-2  gap-y-2 grid grid-rows-2'>
           <div className='row-span-1 bg-[#1B2C4F] rounded-xl'>
 
           </div>
@@ -73,17 +77,17 @@ function Dashboard() {
         </div>
       </div>
     </div>
-    <div className='col-span-1 bg-[#111729] rounded-2xl grid grid-rows-10 py-6 px-8 space-y-2'>
-      {/* Content for the second div */}
-      <div className='row-span-3  flex flex-col items-center justify-center gap-2 text-white'>
-      <Image 
-  src='/user.png'
-  width={100}
-  height={100}
-  className='rounded-full bg-gray-50'
- 
-  alt=''
-/>
+    <div className='col-span-1 bg-[#111729] rounded-2xl grid grid-rows-9 py-6 px-10 space-y-2'>
+      
+      <div className='row-span-2  flex flex-col items-center justify-start gap-2 text-white'>
+          <Image 
+          src='/user.png'
+          width={100}
+          height={100}
+          className='rounded-full bg-gray-50'
+        
+          alt=''
+        />
 <h1 className='text-2xl'>Aliam Colter</h1>
 <p className='text-sm text-[#CCCCCC]'>Physician</p>
       </div>
@@ -105,8 +109,8 @@ function Dashboard() {
 
         </div>
       </div>
-      <div className='row-span-6 bg-[#1C2A4E] rounded-xl'>
-
+      <div className='row-span-6 bg-[#1C2A4E] rounded-2xl p-2'>
+          <Chat/>
       </div>
     </div>
   </section>
