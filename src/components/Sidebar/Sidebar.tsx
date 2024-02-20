@@ -28,11 +28,10 @@ const toggleSideBar=()=>{
 }
 
   return (
-    <div className="flex bg-[#111729]">
       <div
         className={` ${
           open ? "w-60" : "w-18"
-        } bg-[#111729] h-screen relative duration-300`}
+        } bg-[#111729] h-full relative duration-300`}
       >
         <FaCircleArrowLeft
               className={`absolute cursor-pointer -right-2 border border-black top-28 rounded-full text-3xl ${!open && "rotate-180"} text-white`}
@@ -59,15 +58,16 @@ const toggleSideBar=()=>{
           <div className="flex items-center justify-center gap-5">
           <Image
             src="/user.png"
-            width={50}
-            height={50}
+            width={45}
+            height={45}
             alt="Picture of the author"
+            className="bg-white rounded-full"
           /> <span className={`${!open && "hidden"} origin-left duration-200 text-white`}>
-          Lokesh
+          Aliam Colter
           </span>
           </div>
         
-            <div className="flex items-center justify-center gap-5">
+            <div className="flex items-center justify-around w-full gap-5">
             <FaArrowRightFromBracket size={20} className="text-[#CCCCCC]"/>
             <span className={`${!open && "hidden"} origin-left duration-200 text-white`}>
           Logout
@@ -77,10 +77,6 @@ const toggleSideBar=()=>{
           </div>
         </div>
       </div>
-      <div className="flex-1 h-screen">
-        <Dashboard/>        
-      </div>
-    </div>
   );
 };
 

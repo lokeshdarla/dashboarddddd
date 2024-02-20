@@ -1,18 +1,23 @@
+'use client'
 import React from 'react'
 import { FaSearch } from "react-icons/fa";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { LuDot } from "react-icons/lu";
+import { LuAlarmClock } from "react-icons/lu";
 
 import Image from 'next/image';
 import MyChart from '../Charts/Chart';
 import PatientCount from '../Cards/PatientCount';
 import UpcomingCard from '../Cards/UpcomingCard';
 import Chat from '../Chat/Chat';
+import ActivePatient from '../ActivePatients/ActivePatient';
+import Upcoming from '../Upcoming/Upcoming';
+import Review from '../Review/Review';
 
 function Dashboard() {
   return (
-    <section className='h-[100%] w-full bg-[#151C39] rounded-2xl grid grid-cols-3 space-x-3 p-5'>
-    <div className='col-span-2  rounded-2xl grid grid-rows-7 space-y-4 p-2 border border-white'>
+    <section className='w-full bg-[#151C39]  grid grid-cols-3 space-x-3 p-5 overflow-y-auto h-screen'>
+    <div className='col-span-2  rounded-2xl grid grid-rows-7 space-y-4 p-2 '>
       <div className='row-span-1 rounded-xl  flex items-center justify-around'>
       <h1 className='text-3xl font-bold text-[#FFFFFF]'>
         <span className='font-thin'>Hello,</span>
@@ -64,16 +69,21 @@ function Dashboard() {
       </div>
       </div>
       <div className='row-span-3  grid grid-cols-5 gap-2'>
-        <div className='col-span-3 bg-[#1B2C4F] rounded-xl'>
-
+        <div className='col-span-3 text-white '>
+          <ActivePatient/>
         </div>
-        <div className='col-span-2  gap-y-2 grid grid-rows-2'>
-          <div className='row-span-1 bg-[#1B2C4F] rounded-xl'>
-
+        <div className='col-span-2 gap-y-2 grid grid-rows-7'>
+          <div className='row-span-1 flex items-end rounded-xl'>
+          <h1 className='text-xl p-2 text-white'>Upcoming Events</h1>
           </div>
-          <div className='row-span-1 bg-[#1B2C4F] rounded-xl'>
-
+        
+          <div className='row-span-3 bg-[#1B2C4F] rounded-xl'>
+          <Upcoming/>
           </div>
+          <div className='row-span-3 bg-[#1B2C4F] rounded-xl'>
+            <Review/>
+          </div>
+        
         </div>
       </div>
     </div>
