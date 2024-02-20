@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto';
+import {Chart,ChartData} from 'chart.js/auto';
 
 const MyChart = () => {
   const chartRef = useRef<HTMLCanvasElement | null>(null);
@@ -31,7 +31,7 @@ const MyChart = () => {
         // Create a new chart
         new Chart(ctx, {
           type: 'line',
-          data: chartData,
+          data: chartData as ChartData,
           options: {
             scales: {
               x: {

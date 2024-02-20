@@ -5,7 +5,7 @@ import { BsFillClockFill } from "react-icons/bs";
 
 function UpcomingCard() {
   return (
-    <div className='w-full flex flex-col items-start  justify-start'>
+    <div className='w-full flex flex-col items-start  justify-between gap-5 p-2'>
       <div className='flex gap-2 items-center text-sm my-2 text-[#CCCCCC] px-5 '>
         <span className='bg-[#409BEE] px-2 py-1 rounded-full text-black'><FaArrowRightLong/></span>
         <span>Upcoming Events</span>
