@@ -38,7 +38,13 @@ const toggleSideBar=()=>{
               onClick={toggleSideBar}
             />
         <div className="flex h-screen items-center flex-col justify-around">
-          <BsFire className="text-[#409BEE]" size={30}/>
+            <div className="flex items-center justify-around w-full">
+            <BsFire className="text-[#409BEE]" size={30}/>
+            <span className={`${!open && "hidden"} origin-left duration-200 text-white`}>
+              Dashboard
+          </span>
+          </div>
+       
           <ul className="flex flex-col items-start gap-5 w-full justify-center px-3">
           {Menus.map((Menu, index) => (
             <li

@@ -8,7 +8,7 @@ function Review() {
   const percentage = 75;
   return (
 
-    <div className='flex items-center justify-around'>
+    <div className='flex items-center justify-around bg-[#1B2C4F] py-1 my-3 rounded-2xl '>
       <div className='flex flex-col items-start justify-center gap-5'>
         <div className='flex flex-col items-start text-white'>
           <p className='text-[#CCCCCC] '>Consultation</p>
