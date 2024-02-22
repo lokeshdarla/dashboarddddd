@@ -4,6 +4,8 @@ import { FaSearch } from "react-icons/fa";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { LuDot } from "react-icons/lu";
 import { LuAlarmClock } from "react-icons/lu";
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 import Image from 'next/image';
 import MyChart from '../Charts/Chart';
@@ -15,14 +17,29 @@ import Upcoming from '../Upcoming/Upcoming';
 import Review from '../Review/Review';
 
 function Dashboard() {
+  const [greetings, setGreetings] = useState('');
+
+  useEffect(() => {
+    // Fetch data from the API endpoint
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/update_text'); // Assuming your API endpoint is /api/update
+        const data = await response.json();
+        setGreetings(data.greetings[0].text);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    // Call the fetchData function
+    fetchData();
+  }, []); 
   return (
     <section className='w-full bg-[#151C39]  grid grid-cols-3 space-x-3 px-5 py-2 overflow-y-auto h-screen'>
     <div className='col-span-2  rounded-2xl grid grid-rows-5 space-y-4 px-2  py-2'>
       <div className='row-span-1 rounded-xl  flex items-center justify-around'>
       <h1 className='text-3xl font-bold text-[#FFFFFF]'>
-        <span className='font-thin'>Hello,</span>
-        <br />
-        Dr. Colter! 👋
+        {greetings}
       </h1>
       <div className='flex items-center justify-center gap-1'>
       <div className="relative px-3 bg-[#2C3A58] rounded-xl text-sm text-[#CCCCCC]">
