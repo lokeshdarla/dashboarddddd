@@ -20,10 +20,9 @@ function Dashboard() {
   const [greetings, setGreetings] = useState('');
 
   useEffect(() => {
-    // Fetch data from the API endpoint
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/update_text'); // Assuming your API endpoint is /api/update
+        const response = await fetch('/api/update_text');
         const data = await response.json();
         setGreetings(data.greetings[0].text);
       } catch (error) {

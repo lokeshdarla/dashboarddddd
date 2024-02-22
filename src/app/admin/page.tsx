@@ -1,6 +1,8 @@
 // components/FormInterface.js
 "use client"
 import { useState, useEffect } from 'react';
+import { Button } from "@/components/ui/button"
+import { DataTableDemo } from '@/components/EmailTable/EmailTable';
 
 interface FormData {
   name: string;
@@ -69,7 +71,7 @@ const FormInterface = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto my-8 p-6 bg-white rounded-md shadow-md">
+    <div className=" mx-auto my-8 p-6 ">
       <h2 className="text-2xl font-semibold mb-4">Form Interface</h2>
 
       {/* Form for submitting */}
@@ -103,35 +105,13 @@ const FormInterface = () => {
             className="mt-1 p-2 w-full border border-gray-300 rounded-md"
           ></textarea>
         </div>
-        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
-          Submit Form
-        </button>
+      <Button>Click me</Button>
       </form>
 
       <hr className="my-8" />
 
       {/* List of submitted forms */}
-      <h3 className="text-xl font-semibold mb-4">Submitted Forms</h3>
-      <table className="min-w-full">
-        <thead>
-          <tr>
-            <th className="py-2">ID</th>
-            <th className="py-2">Name</th>
-            <th className="py-2">Email</th>
-            <th className="py-2">Message</th>
-          </tr>
-        </thead>
-        <tbody>
-          {submittedForms.map((form) => (
-            <tr key={form.id} className="mb-4">
-              <td className="border-t border-gray-200 py-2">{form.id}</td>
-              <td className="border-t border-gray-200 py-2">{form.name}</td>
-              <td className="border-t border-gray-200 py-2">{form.email}</td>
-              <td className="border-t border-gray-200 py-2">{form.message}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <DataTableDemo/>
     </div>
   );
 };
