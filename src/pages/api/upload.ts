@@ -24,7 +24,8 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
         return;
       }
 
-      const oldPath = files.file.path;
+      // const oldPath = files.file.path;
+      const oldPath='';
       const newPath = `./public/uploads/logo`;
 
       // Move the file

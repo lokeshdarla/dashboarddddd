@@ -38,7 +38,7 @@ export function UploadText() {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Upload Greetings</DialogTitle>
-          <DialogDescription>Make changes to your profile here. Click save when you're done.</DialogDescription>
+          <DialogDescription>{"Make changes to your profile here. Click save when you're done"}</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="flex flex-col gap-2">

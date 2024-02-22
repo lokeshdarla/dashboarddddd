@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { IoCloudUploadOutline } from 'react-icons/io5'
+import Image from 'next/image'
 
 export function UploadLogo() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -38,10 +39,10 @@ export function UploadLogo() {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Upload New Logo</DialogTitle>
-          <DialogDescription>Make changes to your profile here. Click save when you're done.</DialogDescription>
+          <DialogDescription>{"Make changes to your profile here. Click save when you're done."}</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <div className="flex items-center justify-center">{selectedFile ? <img src={URL.createObjectURL(selectedFile)} alt="Preview" className="max-h-64 mb-2" /> : <></>}</div>
+          <div className="flex items-center justify-center">{selectedFile ? <Image src={URL.createObjectURL(selectedFile)} alt="Preview" className="max-h-64 mb-2" /> : <></>}</div>
 
           <div className="flex items-center justify-center w-full">
             <label
