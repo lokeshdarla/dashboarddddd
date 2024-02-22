@@ -20,14 +20,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-
-export const data: Email[] = Array.from({ length: 20 }, (_, index) => ({
-  id: `unique${index}`,
-  name: `User ${index + 1}`,
-  status: index % 2 === 0 ? 'success' : 'pending',
-  email: `user${index + 1}2345@example.com`,
-  message: `Test message #${index + 1} used for the purpose of demonstration only`,
-}))
+import { METHODS } from 'http'
 
 export type Email = {
   id: string
@@ -92,6 +85,29 @@ export function DataTableDemo() {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
+
+  const [data, setData] = React.useState<Email[]>([])
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/email', {
+          method: 'GET',
+        })
+
+        if (response.ok) {
+          const responseData = await response.json()
+          setData(responseData)
+        } else {
+          console.error('Failed to fetch data:', response.statusText)
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
 
   const table = useReactTable({
     data,

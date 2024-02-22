@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { DataTableDemo } from '@/components/EmailTable/EmailTable'
-import { UploadLogo } from '@/components/UpdateLogo/UpdateLogo'
-import { UploadText } from '@/components/UpdateText/UpdateText'
+import { UploadLogo } from '@/components/forms/UpdateLogo/UpdateLogo'
+import { UploadText } from '@/components/forms/UpdateText/UpdateText'
+import { MailForm } from '@/components/forms/MailForm'
 
 interface FormData {
   name: string
@@ -77,9 +78,10 @@ const FormInterface = () => {
       <div className="flex flex-col gap-2 items-start">
         <Button className="mb-4">Back to Dashboard</Button>
         <h2 className="text-2xl font-semibold mb-4">Admin Panel</h2>
-        <div className="flex items-center justify-start gap-5">
+        <div className="flex flex-col lg:flex-row lg:items-center items-start justify-start gap-5">
           <UploadLogo />
           <UploadText />
+          <MailForm />
         </div>
       </div>
 

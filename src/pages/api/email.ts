@@ -15,18 +15,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
   } else if (req.method === 'POST') {
     try {
-      const { formData } = req.body;
+      const formData  = req.body;
+      console.log(req.body);
       const formsPath = path.join(process.cwd(), 'forms.json');
       const formsData = JSON.parse(fs.readFileSync(formsPath, 'utf-8'));
-      formsData.push(formData);
-      fs.writeFileSync(formsPath, JSON.stringify(formsData, null, 2));
-
+      formsData.unshift(formData);
+      fs.writeFileSync(formsPath, JSON.stringify(formsData));
       res.status(200).json({ message: 'Form submitted successfully' });
     } catch (error) {
       console.error('Error submitting form:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
-  } else {
+  }  
+   else {
     res.status(405).json({ message: 'Method Not Allowed' });
   }
 }
