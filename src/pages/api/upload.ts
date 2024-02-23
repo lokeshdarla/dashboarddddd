@@ -1,8 +1,18 @@
-// pages/api/upload.js
-import { NextApiRequest,NextApiResponse } from 'next';
-import Error from 'next/error';
-import formidable from 'formidable';
-import fs from 'fs';
+import { NextApiRequest, NextApiResponse } from 'next';
+import multer from 'multer';
+import { connectDB, disconnectDB } from '@/db';
+import mongoose, { Document, Model, Schema } from 'mongoose';
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+const imageSchema = new mongoose.Schema({
+  name: String,
+  data: Buffer,
+  contentType: String,
+});
+
+const Image = mongoose.model('Image', imageSchema);
 
 export const config = {
   api: {
@@ -10,36 +20,31 @@ export const config = {
   },
 };
 
-export default async function handler(req:NextApiRequest, res:NextApiResponse) {
-  if (req.method === 'POST') {
-    const form = new formidable.IncomingForm({
-      uploadDir: './public/uploads',
-      keepExtensions: true,
-    });
+// export default upload.single('file')(async function handler(req: NextApiRequest, res: NextApiResponse) {
+//   if (req.method === 'POST') {
+//     try {
+//       const { originalname, buffer, mimetype } = req.file;
+//       const image = new Image({
+//         name: originalname,
+//         data: buffer,
+//         contentType: mimetype,
+//       });
 
-    form.parse(req, (err:Error, files) => {
-      if (err) {
-        console.error('Error parsing form:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
-        return;
-      }
-
-      // const oldPath = files.file.path;
-      const oldPath='';
-      const newPath = `./public/uploads/logo`;
-
-      // Move the file
-      fs.rename(oldPath, newPath, (err) => {
-        if (err) {
-          console.error('Error moving file:', err);
-          res.status(500).json({ error: 'Internal Server Error' });
-          return;
-        }
-
-        res.status(200).json({ message: 'File uploaded successfully' });
-      });
-    });
-  } else {
-    res.status(405).json({ message: 'Method Not Allowed' });
-  }
-}
+//       await image.save();
+//       res.status(200).json({ message: 'File uploaded successfully' });
+//     } catch (error) {
+//       console.error('Error saving file to MongoDB:', error);
+//       res.status(500).json({ error: 'Internal Server Error' });
+//     }
+//   } else if (req.method === 'GET') {
+//     try {
+//       const images = await Image.find({}, 'name contentType');
+//       res.status(200).json({ images });
+//     } catch (error) {
+//       console.error('Error retrieving files from MongoDB:', error);
+//       res.status(500).json({ error: 'Internal Server Error' });
+//     }
+//   } else {
+//     res.status(405).json({ message: 'Method Not Allowed' });
+//   }
+// });

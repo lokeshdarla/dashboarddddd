@@ -22,8 +22,8 @@ function Dashboard() {
       try {
         const response = await fetch('/api/update_text')
         const data = await response.json()
-        console.log(data)
-        setGreetings(data.greetings.text)
+        console.log(data.lastUpdatedGreeting.greeting)
+        setGreetings(data.lastUpdatedGreeting.greeting)
       } catch (error) {
         console.error('Error fetching data:', error)
       }
