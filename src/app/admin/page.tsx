@@ -23,56 +23,6 @@ interface SubmittedForm {
 }
 
 const FormInterface = () => {
-  const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '', subject: '' })
-  const [submittedForms, setSubmittedForms] = useState<SubmittedForm[]>([])
-  useEffect(() => {
-    getForms()
-  }, [])
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prevData) => ({ ...prevData, [name]: value }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    try {
-      // Submit form data to the API
-      const response = await fetch('/api/post_email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ formData }),
-      })
-
-      if (response.ok) {
-        console.log('Form submitted successfully')
-        getForms()
-      } else {
-        console.error('Failed to submit form')
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error)
-    }
-  }
-
-  const getForms = async () => {
-    try {
-      const response = await fetch('/api/get_email')
-
-      if (response.ok) {
-        const formsData: SubmittedForm[] = await response.json()
-        setSubmittedForms(formsData)
-      } else {
-        console.error('Failed to get forms')
-      }
-    } catch (error) {
-      console.error('Error getting forms:', error)
-    }
-  }
-
   return (
     <div className=" mx-auto my-8 p-6">
       <div className="flex flex-col gap-2 items-start">

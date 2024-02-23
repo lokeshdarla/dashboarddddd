@@ -23,7 +23,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { METHODS } from 'http'
 
 export type Email = {
-  id: string
+  _id: string
   name: string
   status: 'pending' | 'processing' | 'success' | 'failed'
   email: string
@@ -97,7 +97,8 @@ export function DataTableDemo() {
 
         if (response.ok) {
           const responseData = await response.json()
-          setData(responseData)
+          console.log(responseData)
+          setData(responseData.emails)
         } else {
           console.error('Failed to fetch data:', response.statusText)
         }
